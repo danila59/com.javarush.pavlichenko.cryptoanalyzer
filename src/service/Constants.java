@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 public class Constants {
     public static final char[] ALPHABET = {'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з',

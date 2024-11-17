@@ -1,10 +1,10 @@
 
-import Service.*;
+import service.*;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-public class StartMenu {
+public class ApplicationMenu {
     public static void main(String[] args) throws IOException {
 
         System.out.println("ШИФРОВАНИЕ МЕТОДОМ ЦЕЗАРЯ.");
@@ -14,9 +14,9 @@ public class StartMenu {
         System.out.println("Нажмите 3 если хотите расшифровать файл методом Brute force.");
         System.out.println("Нажмите 4 если хотите расшифровать файл с помощью Статистического анализа.");
         System.out.println("Нажмите 0 если хотите завершить программу.");
-
-        Encryption encryption = new Encryption();
-        Decryption decryption = new Decryption();
+//C:\new1\qwerty1.txt
+// C:\new1\qwerty3.txt
+        CaesarCipher caesarCipher = new CaesarCipher();
         BruteForce bruteForce = new BruteForce();
         StaticAnalyse staticAnalyse = new StaticAnalyse();
 
@@ -82,7 +82,7 @@ public class StartMenu {
                 System.out.println("Введите целое число (ключ) от 1 до 42, на сколько позиций будет сдвиг.");
                 int key = scanner.nextInt();
                 if (Validator.isValidKey(key)) {
-                    encryption.encrypt(FileHandler.readFile(filePath), key, writePath);
+                    caesarCipher.encrypt(FileHandler.readFile(filePath), key, writePath);
                 }
             }
 
@@ -139,7 +139,7 @@ public class StartMenu {
                 System.out.println("Введите целое число (ключ) от 1 до 42, на сколько позиций будет сдвиг.");
                 int key = scanner.nextInt();
                 if (Validator.isValidKey(key)) {
-                    decryption.decrypt(FileHandler.readFile(filePath), key, writePath);
+                    caesarCipher.decrypt(FileHandler.readFile(filePath), key, writePath);
                 }
             }
 

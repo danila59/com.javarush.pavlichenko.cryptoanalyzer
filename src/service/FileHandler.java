@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +26,6 @@ public class FileHandler {
         } catch (IOException e) {
             throw new RuntimeException(e);
         } finally {
-
             assert fileWriter != null;
             fileWriter.close();
             System.out.println("Запись завершена.");

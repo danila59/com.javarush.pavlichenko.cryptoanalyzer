@@ -1,4 +1,4 @@
-package Service;
+package service;
 
 import java.io.*;
 import java.nio.file.Files;
@@ -22,7 +22,7 @@ public class BruteForce {
 
                     if (j + Key >= Constants.ALPHABET.length && c == Constants.ALPHABET[j]) {
                         char c1 = Constants.ALPHABET[(j + Key) % n];
-                        chars[i]=c1;
+                        chars[i] = c1;
                         break;
                     }
 
@@ -35,16 +35,14 @@ public class BruteForce {
 
             result = String.valueOf(chars);
             num++;
-            String filename= "//readme_"+num+".txt";
-            Files.createFile(Path.of(path+filename));
-            BufferedWriter out = new BufferedWriter(new FileWriter(path+filename));
+            String filename = "//readme_" + num + ".txt";
+            Files.createFile(Path.of(path + filename));
+            BufferedWriter out = new BufferedWriter(new FileWriter(path + filename));
             out.write(result);
-            chars=text.toLowerCase().toCharArray();
+            chars = text.toLowerCase().toCharArray();
             Key++;
             out.close();
         }
         System.out.println("Готово, проверьте папку которую Вы указали для записи файлов.");
-        //C:\test
-        //C:\new1\qwerty1.txt
     }
 }

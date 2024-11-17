@@ -1,6 +1,7 @@
-package Service;
+package service;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,7 +11,7 @@ import java.util.TreeMap;
 public class StaticAnalyse {
 
     public void StaticAnalyse(String text, String path) throws IOException {
-        String path1 = "C:\\Users\\Nikita\\IdeaProjects\\com.javarush.pavlichenko.cryptoanalyzer\\txt\\dictionary.txt";
+        String path1 = System.getProperty("user.dir") + File.separator + "text" + File.separator + "dictionary.txt";
         ArrayList<String> results = new ArrayList<>();
         TreeMap<Integer, String> map = new TreeMap<>();
         try {
@@ -22,7 +23,7 @@ public class StaticAnalyse {
             e.printStackTrace();
         }
 
-        int count=0;
+        int count = 0;
         int Key = 0;
         char[] chars = text.toLowerCase().toCharArray();
         String result = "";
@@ -50,8 +51,8 @@ public class StaticAnalyse {
             String[] words = result.split(" ");
             for (String word : words) {
                 for (int i = 0; i < results.size(); i++) {
-                   String s= results.get(i);
-                    if(s.length()<=2)continue;
+                    String s = results.get(i);
+                    if (s.length() <= 2) continue;
                     boolean equals = word.equals(results.get(i));
                     if (equals) {
                         count++;
@@ -59,21 +60,21 @@ public class StaticAnalyse {
                 }
             }
             map.put(count, result);
-            count=0;
+            count = 0;
             Key++;
-            chars=text.toLowerCase().toCharArray();
+            chars = text.toLowerCase().toCharArray();
         }
         int largestKey = 0;
-        String largestValue="";
-                    for(Map.Entry<Integer,String> entry: map.entrySet()){
-                        int key= entry.getKey();
-                        String val= entry.getValue();
-                        if(key>largestKey){
-                            largestKey=key;
-                            largestValue=val;
+        String largestValue = "";
+        for (Map.Entry<Integer, String> entry : map.entrySet()) {
+            int key = entry.getKey();
+            String val = entry.getValue();
+            if (key > largestKey) {
+                largestKey = key;
+                largestValue = val;
 
-                        }
-                    }
-                    FileHandler.writeFile(path,largestValue);
-                }
             }
+        }
+        FileHandler.writeFile(path, largestValue);
+    }
+}
